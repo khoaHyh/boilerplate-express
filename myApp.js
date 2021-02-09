@@ -34,7 +34,7 @@ app.get('/:word/echo', (req, res) => {
 });
 
 app.get('/name', (req, res) => {
-    res.status(200).json({ name: `${req.query.firstname} ${req.query.lastname}`});
+    res.status(200).json({ name: `${req.query.first} ${req.query.last}`});
 });
 
 // app.route(path).get(handler).post(handler)
