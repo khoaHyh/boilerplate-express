@@ -8,6 +8,10 @@ app.get('/', (req, res) => {
 
 app.use(express.static(__dirname + "/public"));
 
+app.get('/json', (req, res) => {
+    res.json({"message": "Hello json"});
+});
+
 
 
 
