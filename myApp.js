@@ -22,6 +22,16 @@ app.get('/json', (req, res) => {
     res.status(200).json(response);
 });
 
+let getTimeString = () => {
+    new Date().toString();
+}
+
+app.get('/now', (req, res, next) => {
+    req.time = getTimeString();
+    next();
+}, (req, res) => {
+    res.status(200).json({ "time": req.time });
+});
 
 
 
