@@ -33,6 +33,12 @@ app.get('/:word/echo', (req, res) => {
     res.status(200).json({ echo: req.params.word });
 });
 
+app.get('/name', (req, res) => {
+    res.status(200).json({ name: `${req.query.firstname} ${req.query.lastname}`});
+});
+
+// app.route(path).get(handler).post(handler)
+
 
 
 
