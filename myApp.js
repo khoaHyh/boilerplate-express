@@ -45,7 +45,7 @@ app.route('/name')
         res.status(200).json({ name: `${req.query.first} ${req.query.last}`});
     })
     .post((req, res) => {
-        res.status(200).json({ name: `${req.query.first} ${req.query.last}`});
+        res.status(200).json({ name: `${req.body.first} ${req.body.last}`});
     });
 
 
