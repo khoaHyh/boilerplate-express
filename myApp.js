@@ -1,11 +1,26 @@
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
 require('dotenv').config();
 
 app.use((req, res, next) => {
     console.log(req.method + " " + req.path + " - " + req.ip);
     next();
 });
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({extended: false}));
+
+// parse application/json
+app.use(bodyParser.json());
+
+app.route('/name')
+    .get((req, res) => {
+        res.status(200).json({ name: `${req.query.first} ${req.query.last}`});
+    })
+    .post((req, res) => {
+        res.status(200).json({ name: `${req.query.first} ${req.query.last}`});
+    });
 
 console.log("Hello World");
 app.get('/', (req, res) => {
@@ -33,14 +48,11 @@ app.get('/:word/echo', (req, res) => {
     res.status(200).json({ echo: req.params.word });
 });
 
-app.get('/name', (req, res) => {
-    res.status(200).json({ name: `${req.query.first} ${req.query.last}`});
-});
+// app.get('/name', (req, res) => {
+//     res.status(200).json({ name: `${req.query.first} ${req.query.last}`});
+// });
 
 // app.route(path).get(handler).post(handler)
-
-
-
 
 
 
