@@ -29,6 +29,9 @@ app.get('/now', (req, res, next) => {
     res.status(200).json({ "time": req.time });
 });
 
+app.get(':word/echo', (req, res) => {
+    res.status(200).json({ echo: req.params.word });
+});
 
 
 
